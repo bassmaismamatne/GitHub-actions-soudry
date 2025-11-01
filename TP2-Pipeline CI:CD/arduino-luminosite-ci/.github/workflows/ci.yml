@@ -1,0 +1,44 @@
+name: Arduino CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Récupération du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Installation de l’Arduino CLI
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
+        with:
+          version: latest
+
+      # Mise à jour et installation du core Arduino
+      - name: Install Arduino core
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      # Vérification des dépendances (librairies)
+      # Ici on peut ajouter des librairies tierces si nécessaire
+      - name: Install additional libraries
+        run: |
+          arduino-cli lib update-index
+          # Ex: arduino-cli lib install "NomDeLaLib"
+
+      # Compilation du sketch
+      - name: Compile Arduino sketch
+        run: |
+          arduino-cli compile --fqbn arduino:avr:uno src/luminosite.ino
+
+      # Vérification de succès
+      - name: Verification
+        run: echo "Compilation terminée avec succès"
