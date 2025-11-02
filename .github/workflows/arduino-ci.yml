@@ -47,7 +47,7 @@ jobs:
       # 🔹 Correspond au README : "Compilation des tests unitaires"
       - name: Compile Arduino unit tests
         run: |
-          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/test123/tes†_luminosite/test_luminosite.ino
+          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/test/tes†_luminosite/test_luminosite.ino
 
       # 7️⃣ Exécution des tests unitaires (simulée)
       # 🔹 Correspond au README : "Exécution des tests unitaires"
