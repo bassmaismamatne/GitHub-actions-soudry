@@ -14,9 +14,6 @@ jobs:
       # Récupération du dépôt
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: false  # <-- empêche Git de tenter de récupérer les submodules
 
       # Installation de l’Arduino CLI
       - name: Set up Arduino CLI
