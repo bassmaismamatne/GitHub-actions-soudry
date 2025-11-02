@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Récupération du dépôt
-- name: Checkout repository
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: 0
-    submodules: false
+  # Récupération du dépôt
+  - name: Checkout repository
+    uses: actions/checkout@v4
+    with:
+      fetch-depth: 0    # récupère tout l'historique pour éviter les warnings Git
+      submodules: false # désactive la récupération des submodules si tu n'en as pas
+
 
       # Installation de l’Arduino CLI
       - name: Set up Arduino CLI
