@@ -19,7 +19,7 @@ jobs:
       - name: Set up Arduino CLI
         uses: arduino/setup-arduino-cli@v2
         with:
-          version: latest
+          version: 1.2.2
 
       # Mise à jour et installation du core Arduino
       - name: Install Arduino core
