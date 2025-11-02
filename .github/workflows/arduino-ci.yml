@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Récupération du dépôt sans submodules pour éviter le warning
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0    # récupère tout l'historique
-          submodules: false # désactive la récupération des submodules
+      # Récupération du dépôt
+- name: Checkout repository
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+    submodules: false
 
       # Installation de l’Arduino CLI
       - name: Set up Arduino CLI
@@ -31,6 +31,7 @@ jobs:
           arduino-cli core install arduino:avr
 
       # Vérification des dépendances (librairies)
+      # Ici on peut ajouter des librairies tierces si nécessaire
       - name: Install additional libraries
         run: |
           arduino-cli lib update-index
@@ -39,4 +40,8 @@ jobs:
       # Compilation du sketch
       - name: Compile Arduino sketch
         run: |
-          arduino-cli compile --fqbn arduino:avr:un
+          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/luminosite/luminosite.ino
+
+      # Vérification de succès
+      - name: Verification
+        run: echo "Compilation terminée avec succès"
