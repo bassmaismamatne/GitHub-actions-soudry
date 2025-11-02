@@ -1,0 +1,12 @@
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Test luminosité CI");
+}
+
+void loop() {
+  int valeur = analogRead(A0);
+  Serial.println(valeur);
+  delay(500);
+}
+
