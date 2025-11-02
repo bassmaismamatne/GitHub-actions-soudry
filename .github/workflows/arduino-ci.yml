@@ -37,7 +37,7 @@ jobs:
       # Compilation du sketch
       - name: Compile Arduino sketch
         run: |
-          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/luminosite.ino
+          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/luminosite/luminosite.ino
 
       # Vérification de succès
       - name: Verification
