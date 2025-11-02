@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Récupération du dépôt
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       # Installation de l’Arduino CLI
       - name: Set up Arduino CLI
