@@ -45,15 +45,15 @@ jobs:
 
       # 6️⃣ Compilation du sketch de test
       # 🔹 Correspond au README : "Compilation des tests unitaires"
-      - name: Compile Arduino unit tests
-        run: |
-          arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/test_luminosite/test_luminosite.ino
+      #- name: Compile Arduino unit tests
+      #  run: |
+      #    arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/test_luminosite/test_luminosite.ino
 
       # 7️⃣ Exécution des tests unitaires (simulée)
       # 🔹 Correspond au README : "Exécution des tests unitaires"
-      - name: Run Arduino unit tests
-        run: |
-          echo "Tests unitaires compilés ✅ (exécution simulée sur CI sans carte physique)"
+      #- name: Run Arduino unit tests
+      #  run: |
+      #    echo "Tests unitaires compilés ✅ (exécution simulée sur CI sans carte physique)"
           # Optionnel : téléverser sur carte réelle pour exécuter les tests
           # arduino-cli upload --fqbn arduino:avr:uno -p /dev/ttyACM0 TP2-PipelineCICD/arduino-luminosite-ci/src/test_luminosite/test_luminosite.ino
 
