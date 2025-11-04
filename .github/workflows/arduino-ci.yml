@@ -11,45 +11,45 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupération du dépôt
+      # 1️ - Récupération du dépôt
       # 🔹 Correspond au README : "Récupération du dépôt"
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Installation de l’Arduino CLI
+      # 2 - Installation de l’Arduino CLI
       # 🔹 Correspond au README : "Installation d’Arduino CLI"
       - name: Set up Arduino CLI
         uses: arduino/setup-arduino-cli@v2
         with:
           version: 1.2.2
 
-      # 3️⃣ Installation du core Arduino (avr)
+      # 3 - Installation du core Arduino (avr)
       # 🔹 Correspond au README : "Installation du core Arduino (avr)"
       - name: Install Arduino core
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
 
-      # 4️⃣ Installation des librairies (AUnit pour tests)
+      # 4️ - Installation des librairies (AUnit pour tests)
       # 🔹 Correspond au README : "Installation des librairies"
       - name: Install Arduino libraries
         run: |
           arduino-cli lib update-index
           arduino-cli lib install "AUnit"
 
-      # 5️⃣ Compilation du sketch principal
+      # 5️ - Compilation du sketch principal
       # 🔹 Correspond au README : "Compilation du sketch principal"
       - name: Compile Arduino sketch
         run: |
           arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/luminosite/luminosite.ino
 
-      # 6️⃣ Compilation du sketch de test
+      # 6️ - Compilation du sketch de test
       # 🔹 Correspond au README : "Compilation des tests unitaires"
       #- name: Compile Arduino unit tests
       #  run: |
       #    arduino-cli compile --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/test_luminosite/test_luminosite.ino
 
-      # 7️⃣ Exécution des tests unitaires (simulée)
+      # 7️ -  Exécution des tests unitaires (simulée)
       # 🔹 Correspond au README : "Exécution des tests unitaires"
       #- name: Run Arduino unit tests
       #  run: |
@@ -57,14 +57,14 @@ jobs:
           # Optionnel : téléverser sur carte réelle pour exécuter les tests
           # arduino-cli upload --fqbn arduino:avr:uno -p /dev/ttyACM0 TP2-PipelineCICD/arduino-luminosite-ci/src/test_luminosite/test_luminosite.ino
 
-      # 8️⃣ Démarrage simulé du projet
+      # 8️ - Démarrage simulé du projet
       # 🔹 Correspond au README : "Démarrage simulé du projet"
       - name: Start project simulation
         run: |
           # Timeout 5s pour ne pas bloquer le workflow
           timeout 5s arduino-cli monitor -p /dev/ttyACM0 --fqbn arduino:avr:uno TP2-PipelineCICD/arduino-luminosite-ci/src/luminosite/luminosite.ino || true
 
-      # 9️⃣ Test HTTP simulé avec curl
+      # 9️ - Test HTTP simulé avec curl
       # 🔹 Correspond au README : "Test HTTP simulé"
       - name: Test HTTP endpoint with curl
         run: |
